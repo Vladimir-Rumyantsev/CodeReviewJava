@@ -1,3 +1,5 @@
+package src;
+
 public class Human {
   static class HumanName {
     private String stringName;

@@ -1,3 +1,5 @@
+package src;
+
 import java.util.Objects;
 
 public final class Fraction extends Number {

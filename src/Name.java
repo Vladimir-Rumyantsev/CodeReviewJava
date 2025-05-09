@@ -1,3 +1,5 @@
+package src;
+
 public class Name {
   private String LastName;
   private String FirstName;

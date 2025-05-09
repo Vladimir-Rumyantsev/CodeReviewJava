@@ -1,3 +1,5 @@
+package src;
+
 public class Path {
   private final City destination;
   private final int cost;
