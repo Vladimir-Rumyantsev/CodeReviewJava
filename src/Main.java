@@ -3,6 +3,12 @@ package src;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Демонстрационный класс для тестирования функционала:
+ * - Работа с объектами Human, Name.
+ * - Моделирование городов (City) и путей между ними (Path).
+ * - Арифметические операции с дробями (Fraction).
+ */
 public class Main {
   public static void main(String[] args) {
     System.out.println("\nЗадание 1.2:");

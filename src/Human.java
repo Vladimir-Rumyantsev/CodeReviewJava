@@ -1,6 +1,13 @@
 package src;
 
+/**
+ * Представляет человека с именем (в виде строки или объекта Name) и ростом.
+ * Поддерживает вывод информации в консоль.
+ */
 public class Human {
+  /**
+   * Внутренний класс для хранения имени человека в двух форматах: строки или объекта Name.
+   */
   static class HumanName {
     private String stringName;
     private Name customName;
@@ -17,27 +24,45 @@ public class Human {
       }
     }
 
-    private String getName() {
-      return customName != null ? customName.toString() : stringName;
+    public String toString() {
+      return (customName != null) ? customName.toString() : stringName;
     }
   }
 
   private HumanName name;
   private int height;
 
+  /**
+   * Создаёт человека с именем в виде строки и указанным ростом.
+   * @param name Имя (может быть null, тогда используется "Неизвестное имя").
+   * @param height Рост в сантиметрах (должен быть > 0).
+   * @throws IllegalArgumentException если height <= 0.
+   */
   public Human(String name, int height) {
+    if (height <= 0) {
+      throw new IllegalArgumentException("Рост не может быть не натуральным числом");
+    }
     this.name = new HumanName(name);
     this.height = height;
   }
 
+  /**
+   * Создаёт человека с именем в виде объекта Name и указанным ростом.
+   * @param name Имя (может быть null, тогда используется "Неизвестное имя").
+   * @param height Рост в сантиметрах (должен быть > 0).
+   * @throws IllegalArgumentException если height <= 0.
+   */
   public Human(Name name, int height) {
+    if (height <= 0) {
+      throw new IllegalArgumentException("Рост не может быть не натуральным числом");
+    }
     this.name = new HumanName(name);
     this.height = height;
   }
 
   public Human() {
     this.name = new HumanName("Неизвестное имя");
-    this.height = 0;
+    this.height = 1;
   }
 
   public void setName(String name) {
@@ -52,15 +77,20 @@ public class Human {
     this.height = height;
   }
 
+  @Override
   public String toString() {
-    return (name.getName() + ", рост: " + height);
+    return (name + ", рост: " + height);
   }
 
   public void printInformation() {
     this.printInformation("\n");
   }
 
+  /**
+   * Выводит информацию о человеке в консоль с заданным окончанием строки.
+   * @param end Строка, добавляемая в конце вывода (например, "\n").
+   */
   public void printInformation(String end) {
-    System.out.print("Человек с именем \"" + name.getName() + "\" и ростом " + height + end);
+    System.out.print("Человек с именем \"" + name + "\" и ростом " + height + end);
   }
 }

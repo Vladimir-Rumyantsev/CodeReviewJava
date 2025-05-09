@@ -1,41 +1,57 @@
 package src;
 
+/**
+ * Представляет ФИО (Фамилию, Имя, Отчество) человека.
+ * Поддерживает частичное заполнение данных (например, только имя).
+ */
 public class Name {
-  private String LastName;
-  private String FirstName;
-  private String Patronymic;
+  private String lastName;
+  private String firstName;
+  private String patronymic;
 
-  public Name(String LastName, String FirstName, String Patronymic) {
-    this.LastName = LastName;
-    this.FirstName = FirstName;
-    this.Patronymic = Patronymic;
+  /**
+   * Создаёт объект с указанными фамилией, именем и отчеством.
+   * @param lastName Фамилия (может быть null).
+   * @param firstName Имя (может быть null).
+   * @param patronymic Отчество (может быть null).
+   */
+  public Name(String lastName, String firstName, String patronymic) {
+    this.lastName = lastName;
+    this.firstName = firstName;
+    this.patronymic = patronymic;
   }
 
-  public Name(String LastName, String FirstName) {
-    this(LastName, FirstName, null);
+  public Name(String lastName, String firstName) {
+    this(lastName, firstName, null);
   }
 
-  public Name(String FirstName) {
-    this(null, FirstName, null);
+  public Name(String firstName) {
+    this(null, firstName, null);
   }
 
   public Name() {
     this(null, null, null);
   }
 
+  /**
+   * Возвращает ФИО в формате "Фамилия Имя Отчество".
+   * Если какая-то часть отсутствует (null), она не включается в строку.
+   * @return Непустая строка с ФИО или пустая строка, если все части null.
+   */
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
 
-    if (LastName != null) {
-      sb.append(LastName).append(" ");
+    if (lastName != null) {
+      sb.append(lastName).append(" ");
     }
 
-    if (FirstName != null) {
-      sb.append(FirstName).append(" ");
+    if (firstName != null) {
+      sb.append(firstName).append(" ");
     }
 
-    if (Patronymic != null) {
-      sb.append(Patronymic).append(" ");
+    if (patronymic != null) {
+      sb.append(patronymic).append(" ");
     }
 
     if (sb.isEmpty()) {
@@ -46,26 +62,26 @@ public class Name {
   }
 
   public void setLastName(String LastName) {
-    this.LastName = LastName;
+    this.lastName = LastName;
   }
 
   public void setFirstName(String FirstName) {
-    this.FirstName = FirstName;
+    this.firstName = FirstName;
   }
 
   public void setPatronymic(String Patronymic) {
-    this.Patronymic = Patronymic;
+    this.patronymic = Patronymic;
   }
 
   public String getLastName() {
-    return LastName;
+    return lastName;
   }
 
   public String getFirstName() {
-    return FirstName;
+    return firstName;
   }
 
   public String getPatronymic() {
-    return Patronymic;
+    return patronymic;
   }
 }
