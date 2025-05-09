@@ -22,17 +22,14 @@ public class Fraction extends Number {
       throw new IllegalArgumentException("Знаменатель не может быть равен нулю");
     }
 
-    int gcd = gcd(numerator, denominator);
-    numerator /= gcd;
-    denominator /= gcd;
-
     if (denominator < 0) {
       numerator *= -1;
       denominator *= -1;
     }
 
-    this.numerator = numerator;
-    this.denominator = denominator;
+    int gcd = gcd(numerator, denominator);
+    this.numerator = numerator / gcd;
+    this.denominator = denominator / gcd;
     this.cachedRealValue = null;
   }
 
@@ -50,9 +47,6 @@ public class Fraction extends Number {
   public void setNumerator(int numerator) {
     if (numerator != this.numerator) {
       int gcd = gcd(numerator, this.denominator);
-      if (gcd < 0) {
-        gcd *= -1;
-      }
       this.numerator = numerator / gcd;
       this.denominator /= gcd;
       this.cachedRealValue = null;
@@ -75,9 +69,6 @@ public class Fraction extends Number {
       }
 
       int gcd = gcd(this.numerator, denominator);
-      if (gcd < 0) {
-        gcd *= -1;
-      }
       this.numerator /= gcd;
       this.denominator = denominator / gcd;
       this.cachedRealValue = null;
@@ -88,7 +79,8 @@ public class Fraction extends Number {
    * Метод для нахождения наибольшего общего делителя (GCD).
    */
   private int gcd(int a, int b) {
-    return (b == 0) ? a : gcd(b, a % b);
+    int gcd = (b == 0) ? a : gcd(b, a % b);
+    return (gcd > 0) ? gcd : -gcd;
   }
 
   /**
