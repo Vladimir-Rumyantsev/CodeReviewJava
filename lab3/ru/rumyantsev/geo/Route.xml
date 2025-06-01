@@ -1,0 +1,71 @@
+<class>
+    <name>Route</name>
+    <description>
+        Представляет маршрут между двумя городами.
+        Реализует поиск пути между начальным и конечным городом
+        с использованием алгоритма DFS (поиск в глубину).
+    </description>
+    <fields>
+        <field>
+            <name>startCity</name>
+            <type>City</type>
+            <description>Начальный город маршрута (не null)</description>
+        </field>
+        <field>
+            <name>endCity</name>
+            <type>City</type>
+            <description>Конечный город маршрута (не null)</description>
+        </field>
+    </fields>
+    <constructors>
+        <constructor>
+            <signature>Route(City startCity, City endCity)</signature>
+            <params>
+                <param>
+                    <name>startCity</name>
+                    <type>City</type>
+                    <description>Город отправления</description>
+                </param>
+                <param>
+                    <name>endCity</name>
+                    <type>City</type>
+                    <description>Город назначения</description>
+                </param>
+            </params>
+            <throws>
+                <exception>
+                    <type>IllegalArgumentException</type>
+                    <condition>Если любой город == null</condition>
+                </exception>
+            </throws>
+        </constructor>
+    </constructors>
+    <methods>
+        <method>
+            <name>getRoute</name>
+            <signature>City[] getRoute()</signature>
+            <description>
+                Возвращает массив городов маршрута от startCity до endCity.
+                Использует рекурсивный DFS с backtracking.
+            </description>
+            <returns>
+                Массив городов или пустой массив если путь не найден
+            </returns>
+        </method>
+        <method>
+            <name>findRoute</name>
+            <signature>boolean findRoute(City current, City destination, List&lt;City&gt; route)</signature>
+            <description>
+                Рекурсивный метод поиска пути. Добавляет посещенные города в список route.
+            </description>
+            <returns>true если путь найден</returns>
+        </method>
+    </methods>
+    <relationships>
+        <association>
+            <target>City</target>
+            <cardinality>2..*</cardinality>
+            <description>Связан с городами маршрута</description>
+        </association>
+    </relationships>
+</class>

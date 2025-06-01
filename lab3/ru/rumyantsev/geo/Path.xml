@@ -1,0 +1,63 @@
+<class>
+    <name>Path</name>
+    <description>
+        Представляет путь между двумя городами с фиксированной стоимостью.
+        Неизменяемый объект, хранит город назначения и стоимость перемещения.
+    </description>
+    <fields>
+        <field>
+            <name>destination</name>
+            <type>City</type>
+            <description>Город назначения (не может быть null)</description>
+        </field>
+        <field>
+            <name>cost</name>
+            <type>int</type>
+            <description>Стоимость пути (неотрицательная)</description>
+        </field>
+    </fields>
+    <constructors>
+        <constructor>
+            <signature>Path(City destination, int cost)</signature>
+            <params>
+                <param>
+                    <name>destination</name>
+                    <type>City</type>
+                    <description>Город назначения (обязательно)</description>
+                </param>
+                <param>
+                    <name>cost</name>
+                    <type>int</type>
+                    <description>Стоимость пути (≥ 0)</description>
+                </param>
+            </params>
+            <throws>
+                <exception>
+                    <type>IllegalArgumentException</type>
+                    <condition>Если destination == null или cost &lt; 0</condition>
+                </exception>
+            </throws>
+        </constructor>
+    </constructors>
+    <methods>
+        <method>
+            <name>isDestinationSameAs</name>
+            <signature>boolean isDestinationSameAs(Path other)</signature>
+            <description>Проверяет, ведут ли пути в один город</description>
+            <returns>true если города назначения совпадают</returns>
+        </method>
+        <method>
+            <name>equals</name>
+            <signature>boolean equals(Object obj)</signature>
+            <description>
+                Пути равны если ведут в один город (по equals) и имеют одинаковую стоимость
+            </description>
+        </method>
+    </methods>
+    <relationships>
+        <association>
+            <target>City</target>
+            <description>Связан с городом назначения</description>
+        </association>
+    </relationships>
+</class>

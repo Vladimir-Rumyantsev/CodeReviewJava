@@ -1,0 +1,75 @@
+<class>
+    <name>Main</name>
+    <description>
+        Главный класс приложения. Содержит точку входа (main) и реализует
+        интерактивное меню для демонстрации функциональности:
+        - Работа с дробями (Fraction)
+        - Управление городами и путями (City, Path)
+        - Построение маршрутов (Route)
+        - Демонстрационные вычисления
+    </description>
+    <fields>
+        <field>
+            <name>scanner</name>
+            <type>Scanner</type>
+            <description>Для чтения пользовательского ввода</description>
+        </field>
+        <field>
+            <name>cities</name>
+            <type>Map&lt;String, City&gt;</type>
+            <description>Хранит города по именам</description>
+        </field>
+        <field>
+            <name>fractions</name>
+            <type>List&lt;Fraction&gt;</type>
+            <description>Коллекция созданных дробей</description>
+        </field>
+    </fields>
+    <methods>
+        <method>
+            <name>inputNumber</name>
+            <signature>int inputNumber(String prompt, int minVal, int maxVal)</signature>
+            <description>
+                Универсальный метод ввода целых чисел с валидацией диапазона.
+                Обрабатывает некорректный ввод.
+            </description>
+            <returns>Введенное пользователем число</returns>
+        </method>
+        <method>
+            <name>sumNumbers</name>
+            <signature>double sumNumbers(Collection&lt;Number&gt; nums)</signature>
+            <description>
+                Суммирует коллекцию чисел разных типов (Integer, Double, Fraction).
+                Использует преобразование к double.
+            </description>
+        </method>
+        <method>
+            <name>showMainMenu</name>
+            <signature>void showMainMenu()</signature>
+            <description>
+                Основное меню приложения. Координирует вызовы демонстрационных функций.
+            </description>
+        </method>
+        <method>
+            <name>demonstrateFractions</name>
+            <signature>void demonstrateFractions()</signature>
+            <description>
+                Подменю для операций с дробями: создание, арифметика, клонирование.
+            </description>
+        </method>
+    </methods>
+    <relationships>
+        <dependency>
+            <target>Fraction</target>
+            <description>Использует для арифметических операций</description>
+        </dependency>
+        <dependency>
+            <target>City</target>
+            <description>Управляет созданием городов</description>
+        </dependency>
+        <dependency>
+            <target>Route</target>
+            <description>Строит маршруты между городами</description>
+        </dependency>
+    </relationships>
+</class>

@@ -1,0 +1,85 @@
+<class>
+    <name>Fraction</name>
+    <description>
+        Представляет математическую дробь (numerator/denominator).
+        Автоматически сокращает дробь при создании. Поддерживает основные
+        арифметические операции и реализует интерфейс Number.
+    </description>
+    <fields>
+        <field>
+            <name>numerator</name>
+            <type>int</type>
+            <description>Числитель (после сокращения)</description>
+        </field>
+        <field>
+            <name>denominator</name>
+            <type>int</type>
+            <description>Знаменатель (после сокращения, > 0)</description>
+        </field>
+        <field>
+            <name>cachedRealValue</name>
+            <type>double</type>
+            <description>Кэшированное вещественное значение дроби</description>
+        </field>
+    </fields>
+    <constructors>
+        <constructor>
+            <signature>Fraction(int numerator, int denominator)</signature>
+            <description>
+                Создает сокращенную дробь. Автоматически обрабатывает знак
+                (знак хранится в числителе).
+            </description>
+            <throws>
+                <exception>
+                    <type>IllegalArgumentException</type>
+                    <condition>Если denominator == 0</condition>
+                </exception>
+            </throws>
+        </constructor>
+    </constructors>
+    <methods>
+        <method>
+            <name>gcd</name>
+            <signature>int gcd(int a, int b)</signature>
+            <description>
+                Вычисляет НОД двух чисел по алгоритму Евклида.
+                Обрабатывает случаи с нулевыми значениями.
+            </description>
+        </method>
+        <method>
+            <name>sum</name>
+            <signature>Fraction sum(Fraction other)</signature>
+            <description>Складывает текущую дробь с другой дробью</description>
+            <throws>
+                <exception>
+                    <type>NullPointerException</type>
+                    <condition>Если other == null</condition>
+                </exception>
+            </throws>
+        </method>
+        <method>
+            <name>div</name>
+            <signature>Fraction div(Fraction other)</signature>
+            <description>Делит текущую дробь на другую дробь</description>
+            <throws>
+                <exception>
+                    <type>IllegalArgumentException</type>
+                    <condition>Если other == 0</condition>
+                </exception>
+            </throws>
+        </method>
+        <method>
+            <name>doubleValue</name>
+            <signature>double doubleValue()</signature>
+            <description>
+                Возвращает вещественное значение дроби (из кэшированного значения)
+            </description>
+        </method>
+    </methods>
+    <relationships>
+        <inheritance>
+            <superclass>Number</superclass>
+            <description>Реализует методы конвертации в примитивные типы</description>
+        </inheritance>
+    </relationships>
+</class>

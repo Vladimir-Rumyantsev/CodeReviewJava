@@ -1,0 +1,100 @@
+<class>
+    <name>City</name>
+    <description>
+        Представляет город с возможностью хранения путей к другим городам.
+        Управляет названием города и списком путей (дорог) к другим городам,
+        автоматически выбирая путь с минимальной стоимостью при конфликтах.
+    </description>
+    <fields>
+        <field>
+            <name>name</name>
+            <type>String</type>
+            <description>Название города (не может быть null или пустым)</description>
+        </field>
+        <field>
+            <name>paths</name>
+            <type>Map&lt;City, Path&gt;</type>
+            <description>
+                Хранит пути к другим городам. Ключ - город назначения,
+                значение - путь с минимальной стоимостью.
+            </description>
+        </field>
+    </fields>
+    <constructors>
+        <constructor>
+            <signature>City(String name, List&lt;Path&gt; paths)</signature>
+            <params>
+                <param>
+                    <name>name</name>
+                    <type>String</type>
+                    <description>Название города (обязательно)</description>
+                </param>
+                <param>
+                    <name>paths</name>
+                    <type>List&lt;Path&gt;</type>
+                    <description>Начальный список путей (может быть null)</description>
+                </param>
+            </params>
+            <throws>
+                <exception>
+                    <type>IllegalArgumentException</type>
+                    <condition>Если name == null или пустое</condition>
+                </exception>
+            </throws>
+        </constructor>
+        <constructor>
+            <signature>City(String name)</signature>
+            <description>Создает город без начальных путей</description>
+        </constructor>
+    </constructors>
+    <methods>
+        <method>
+            <name>addPath</name>
+            <signature>addPath(City destination, int cost)</signature>
+            <description>
+                Добавляет путь к указанному городу. Если путь уже существует,
+                заменяет его только если новая стоимость ниже.
+            </description>
+            <params>
+                <param>
+                    <name>destination</name>
+                    <type>City</type>
+                    <description>Город назначения (не null)</description>
+                </param>
+                <param>
+                    <name>cost</name>
+                    <type>int</type>
+                    <description>Стоимость пути (должна быть > 0)</description>
+                </param>
+            </params>
+            <throws>
+                <exception>
+                    <type>IllegalArgumentException</type>
+                    <condition>Если destination == null или cost ≤ 0</condition>
+                </exception>
+            </throws>
+        </method>
+        <method>
+            <name>getPaths</name>
+            <signature>List&lt;Path&gt; getPaths()</signature>
+            <returns>Неизменяемый список всех путей</returns>
+        </method>
+        <method>
+            <name>equals</name>
+            <signature>boolean equals(Object o)</signature>
+            <description>
+                Сравнивает города по названию (если нет путей) или по содержимому путей.
+                Два города равны если:
+                - Это один объект
+                - Имеют одинаковые пути (если пути есть)
+                - Или одинаковые названия (если путей нет)
+            </description>
+        </method>
+    </methods>
+    <relationships>
+        <association>
+            <target>Path</target>
+            <description>Содержит коллекцию объектов Path</description>
+        </association>
+    </relationships>
+</class>
