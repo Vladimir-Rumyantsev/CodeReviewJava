@@ -1,4 +1,4 @@
-package max;
+package lab2max;
 
 import java.util.ArrayList;
 import java.util.List;
