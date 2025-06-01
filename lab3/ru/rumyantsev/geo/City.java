@@ -162,7 +162,7 @@ public class City {
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (o == null || getClass() != o.getClass() || paths.isEmpty()) return false;
     City city = (City) o;
     return Objects.equals(paths, city.paths);
   }

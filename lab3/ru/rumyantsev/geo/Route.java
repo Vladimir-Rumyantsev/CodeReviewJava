@@ -117,7 +117,7 @@ public class Route {
   @Override
   public String toString() {
     City[] route = getRoute();
-    if (route.length == 0) { return "No route found"; }
+    if (route.length == 0) return "Маршрут не найден";
     return Arrays.stream(route)
         .map(City::getName)
         .collect(Collectors.joining(" -> "));
