@@ -32,7 +32,7 @@ public class Main {
    * @param args Аргументы командной строки (для возведения в степень)
    */
   public static void main(String[] args) {
-    System.out.println("Задание 7.3: Обработка аргументов командной строки");
+    System.out.println("\nЗадание 7.3: Обработка аргументов командной строки");
     if (args.length >= 2) {
       double result = power(args[0], args[1]);
       System.out.printf("Результат возведения %s в степень %s: %.2f%n", args[0], args[1], result);
